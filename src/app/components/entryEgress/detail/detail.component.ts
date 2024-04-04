@@ -15,6 +15,10 @@ export class DetailComponent implements OnInit, OnDestroy {
   itemsSubscription:Subscription = new Subscription();
   items:EntryEgress[];
 
+  areItemsSortedByDescription:boolean = false;
+  areItemsSortedByAmount:boolean = false;
+  areItemsSortedByType:boolean = false;
+
   constructor(
     private store:Store<entryEgressReducerState>,
     public entryEgressServices: EntryEgressService
@@ -26,10 +30,45 @@ export class DetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  sortByDescription() {
+    this.areItemsSortedByDescription = !this.areItemsSortedByDescription;
+
+    this.items.sort( (a, b) => {
+      // First, sort by type
+      if (a['type'] < b['type']) return 1;
+      if (a['type'] > b['type']) return -1;
+      
+      // If types are the same, sort by description
+      return this.areItemsSortedByDescription ? a['description'].localeCompare(b['description']) : b['description'].localeCompare(a['description']);
+    });
+  }
+
+  sortByAmount() {
+    this.areItemsSortedByAmount = !this.areItemsSortedByAmount;
+
+		this.items.sort( (a, b) => {
+      // First, sort by type
+      if (a['type'] < b['type']) return 1;
+      if (a['type'] > b['type']) return -1;
+      
+      // If types are the same, sort by amount
+      return this.areItemsSortedByAmount ? b['amount'] - a['amount'] : a['amount'] - b['amount'];
+    });
+  }
+
+  sortByType() {
+    this.areItemsSortedByType = !this.areItemsSortedByType;
+		this.items.sort(a => a['type'] === 'entry' && this.areItemsSortedByType ? 1 : -1);
+  }
+
+  async confirmAlertToDeleteItemEntryEgress(item:EntryEgress) {
+    let respAlertConfirm = await this.entryEgressServices.showAlertWithConfirmation(`(${item['description']})`, item['type']);
+    respAlertConfirm === true ? this.removeItemEntryEgress(item) : '';
+  }
+
   removeItemEntryEgress( item:EntryEgress ) { 
-    // item.description => en caso de que se quiera mostrar en una alerta la desc elimnada
     this.entryEgressServices.removeEntryEgress(item.uid)
-    .then( () => this.entryEgressServices.showAlert(`${ item.description } has been deleted successfully!`, true, 5000) )
+    .then( () => this.entryEgressServices.showAlert(`${ item.description } has been deleted successfully!`, true, 5000))
     .catch( err => {
       console.error(err);
       this.entryEgressServices.showAlert(err, false, 9000);

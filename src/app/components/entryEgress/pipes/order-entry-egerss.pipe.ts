@@ -7,7 +7,7 @@ import { EntryEgress } from '../entry-egress.model';
 export class OrderEntryEgerssPipe implements PipeTransform {
 
   transform( items: EntryEgress[] ): EntryEgress[] {
-    return items.sort( a => a.type === 'entry' ? -1 : 1);
+    return items.sort( (a, b) => a['type'] < b['type'] ? 1 : -1);
   }
 
 }

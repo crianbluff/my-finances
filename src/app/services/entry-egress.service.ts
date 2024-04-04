@@ -89,4 +89,29 @@ export class EntryEgressService {
     })
   }
 
+  showAlertWithConfirmation(message:string, btnText:string) {
+
+    const Toast = Swal.mixin({
+      html:
+      `
+        <h2>
+          Do you want to delete ${btnText === 'entry' ? 'Earning' : 'Expense'}: ${message}?
+        </h2>
+        
+        <p style="font-size: 1.25rem; padding: 0.25rem 0;">
+          You will not be able to revert this!
+        </p>
+      `,
+      showCancelButton: true,
+      allowOutsideClick: false,
+      confirmButtonText: `Yes, delete ${btnText === 'entry' ? 'Earning' : 'Expense'}`,
+      confirmButtonColor: btnText === 'entry' ? '#25b1c3' : '#d22824',
+      cancelButtonText: 'No, cancel',
+      reverseButtons: true,
+    });
+
+    let respAlert = Toast.fire().then(res => res['value'] === true ? true : false);
+    return respAlert;
+  }
+
 }

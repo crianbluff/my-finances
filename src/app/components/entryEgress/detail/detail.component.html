@@ -9,15 +9,15 @@
         <table class="table text-center">
           <thead>
             <tr>
-              <th>
+              <th style="cursor: pointer;" (click)="sortByDescription()">
                 Description
               </th>
 
-              <th>
+              <th style="cursor: pointer;" (click)="sortByAmount()">
                 Amount
               </th>
 
-              <th>
+              <th style="cursor: pointer;" (click)="sortByType()">
                 Type
               </th>
 
@@ -34,7 +34,7 @@
               </td>
 
               <td [ngClass]="{'text-info': item.type === 'entry', 'text-danger': item.type === 'egress'}">
-                {{ item.amount | currency:'COP':'$' }}
+                {{ item.amount | currency:'COP':'$' }} COP
               </td>
 
               <td>
@@ -48,7 +48,7 @@
               </td>
 
               <td>
-                <button [ngClass]="{'btn-primary': item.type === 'entry', 'btn-danger': item.type === 'egress'}" class="btn" (click)="removeItemEntryEgress(item)">
+                <button [ngClass]="{'btn-primary': item.type === 'entry', 'btn-danger': item.type === 'egress'}" class="btn" (click)="confirmAlertToDeleteItemEntryEgress(item)">
                   <i class="fa fa-trash"></i>
                   Delete
                   <span class="font-weight-bold">
