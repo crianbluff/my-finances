@@ -252,3 +252,22 @@ body {
 .submit-btn {
   background-image: linear-gradient(to left, #1b8bb5, #029eb1);
 }
+
+.container-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 990px) {
+  .container-card {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-card {
+    grid-template-columns: 1fr;
+  }
+}

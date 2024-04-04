@@ -1,5 +1,8 @@
-<div class="row">
-  <div class="col-md-4 col-sm-6 col-xs-12 my-3">
+<!-- <div class="container">
+  <div class="row"> -->
+    <!-- <div class="col-md-4 col-sm-6 col-xs-12 my-3"> -->
+<div class="container-card">
+  <div class="m-2">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -14,7 +17,7 @@
 
             <div class="fluid-container bg-gradient">
               <h3 class="font-weight-medium text-right mb-0 text-success">
-                {{ entries | currency:'COP':'$' }}
+                {{ entries | currency:'COP':'$' }} COP
               </h3>
             </div>
           </div>
@@ -27,8 +30,8 @@
       </div>
     </div>
   </div>
-
-  <div class="col-md-4 col-sm-6 col-xs-12 my-3">
+  
+  <div class="m-2">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -43,7 +46,7 @@
 
             <div class="fluid-container bg-gradient">
               <h3 class="font-weight-medium text-right mb-0 text-danger">
-                {{ expenses | currency:'COP':'$' }}
+                {{ expenses | currency:'COP':'$' }} COP
               </h3>
             </div>
           </div>
@@ -57,7 +60,7 @@
     </div>
   </div>
 
-  <div class="col-md-4 col-sm-12 col-xs-12 my-3">
+  <div class="m-2">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -72,7 +75,7 @@
 
             <div class="fluid-container bg-gradient">
               <h3 class="font-weight-medium text-right text-info mb-0">
-                {{ entries - expenses | currency:'COP':'$' }}
+                {{ entries - expenses | currency:'COP':'$' }} COP
               </h3>
             </div>
           </div>
@@ -82,21 +85,17 @@
   </div>
 </div>
 
-<div class="row m-5">  
-  <div class="col-12 p-5" *ngIf="entries > 0 || expenses > 0">
+<div class="m-5">  
+  <div *ngIf="entries > 0 || expenses > 0">
     <div class="card card-statistics">
       <div class="card-body">
-        
         <h1 class="card-title text-primary text-center bg-title mb-5">
           Graph
         </h1>
 
         <div>
-          <div style="display: block">
-            <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" chartType="doughnut"></canvas>
-          </div>
+          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" chartType="doughnut"></canvas>
         </div>
-        
       </div>
     </div>
   </div>
