@@ -35,6 +35,11 @@ export class DetailComponent implements OnInit, OnDestroy {
 
     this.items.sort( (a, b) => {
       // First, sort by type
+      if (this.areItemsSortedByType) {
+        if (a['type'] < b['type']) return -1;
+        if (a['type'] > b['type']) return 1;
+      }
+
       if (a['type'] < b['type']) return 1;
       if (a['type'] > b['type']) return -1;
       
@@ -48,17 +53,36 @@ export class DetailComponent implements OnInit, OnDestroy {
 
 		this.items.sort( (a, b) => {
       // First, sort by type
+      if (this.areItemsSortedByType) {
+        if (a['type'] < b['type']) return -1;
+        if (a['type'] > b['type']) return 1;
+      }
+
       if (a['type'] < b['type']) return 1;
       if (a['type'] > b['type']) return -1;
       
       // If types are the same, sort by amount
-      return this.areItemsSortedByAmount ? b['amount'] - a['amount'] : a['amount'] - b['amount'];
+      return this.areItemsSortedByAmount ? a['amount'] - b['amount'] : b['amount'] - a['amount'];
     });
   }
 
   sortByType() {
     this.areItemsSortedByType = !this.areItemsSortedByType;
-		this.items.sort(a => a['type'] === 'entry' && this.areItemsSortedByType ? 1 : -1);
+		
+    // First, sort by type
+    this.items.sort( (a, b) => {
+
+      if (this.areItemsSortedByType) {
+        if (a['type'] < b['type']) return -1;
+        if (a['type'] > b['type']) return 1;
+      }
+
+      if (a['type'] < b['type']) return 1;
+      if (a['type'] > b['type']) return -1;
+      
+      // If types are the same, sort by amount
+      return this.areItemsSortedByAmount ? a['amount'] - b['amount'] : b['amount'] - a['amount'];
+    });
   }
 
   async confirmAlertToDeleteItemEntryEgress(item:EntryEgress) {
