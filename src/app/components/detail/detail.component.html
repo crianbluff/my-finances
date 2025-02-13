@@ -1,0 +1,76 @@
+<section>
+  <!-- Title -->
+  <sh-title shTxt="Detail - Earnings/Expenses"></sh-title>
+
+  <!-- Totals -->
+  <div>
+    <div class="ctn-cards">
+      <sh-card
+        titleShCard="Earnings"
+        [totalShCard]="howMuchEarnings"
+        [amountShCard]="totalEarnings | currency:'COP':'$'"
+        bgShCard="bg-success-dark"
+        iconClassShNameCard="fa-money-bill-alt"
+      >
+      </sh-card>
+    
+      <sh-card
+        titleShCard="Expenses"
+        [totalShCard]="howMuchExpenses"
+        [amountShCard]="totalExpenses | currency:'COP':'$'"
+        bgShCard="bg-danger-dark"
+        iconClassShNameCard="fa-money-bill-alt"
+      >
+      </sh-card>
+    
+      <sh-card
+        titleShCard="Difference" txtShCard="Total"
+        [totalShCard]="howMuchEarnings + howMuchExpenses"
+        [amountShCard]="totalEarnings - totalExpenses | currency:'COP':'$'"
+        bgShCard="bg-black"
+        iconClassShNameCard="fa-money-bill-alt"
+      >
+      </sh-card>
+    </div>
+  </div>
+
+  <!-- Tabla responsive-->
+  <sh-table
+    *ngIf="totalEarnings > 0 || totalExpenses > 0"
+    [shTableItems]="itemsEarningsExpenses"
+    (shThSortByAlphabetCaptureClick)="sortByDescription()"
+    (shThSortByGreaterCaptureClick)="sortByAmount()"
+    (shThSortByTypeCaptureClick)="sortByType()"
+    (shBtnDeleteCaptureClick)="confirmAlertToDeleteItemEntryEgress($event)"
+  >
+    <!-- Table header -->
+    <thead>
+      <tr>
+        <th class="txt-center" scope="col">#</th>
+        <th scope="col" (click)="sortByDescription()">
+          <span>
+            Description {{ areItemsSortedByDescription ? '⬆️ Z-A' : '⬇️ A-Z' }}
+          </span>
+        </th>
+  
+        <th class="txt-center" scope="col" (click)="sortByAmount()">
+          <span>
+            Amount {{ areItemsSortedByAmount ? '⬆️ 9-0' : '⬇️ 0-9' }}
+          </span>
+        </th>
+  
+        <th class="txt-center" scope="col" (click)="sortByType()">
+          <span>
+            Type {{ areItemsSortedByType ? '⛔ Expenses' : '✅ Earnings' }}
+          </span>
+        </th>
+  
+        <th class="txt-center" scope="col">
+          <span>
+            Actions Earnings/Expenses
+          </span>
+        </th>
+      </tr>
+    </thead>
+  </sh-table>
+</section>

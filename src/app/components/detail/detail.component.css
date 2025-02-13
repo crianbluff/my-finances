@@ -1,0 +1,33 @@
+thead {
+  background-color: #111625;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+thead th {
+  border-bottom: 2px solid #dee2e6;
+}
+
+thead th:not(:first-child, :last-child) {
+  cursor: pointer;
+}
+
+thead tr th,
+tbody tr td {
+  padding: 1rem 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  thead {
+    font-size: 1.25rem;
+  }
+  
+  thead th:nth-child(1) {
+    display: none;
+  }
+
+  thead tr th {
+    padding: 1rem 0.5rem;
+  }
+}

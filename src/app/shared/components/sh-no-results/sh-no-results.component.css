@@ -1,0 +1,12 @@
+/* No Results */
+.ctn-no-results {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.txt-no-results {
+  color: #ffffff;
+  font-size: 1.25rem;
+}

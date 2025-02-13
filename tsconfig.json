@@ -17,7 +17,35 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"],
+
+      "@guards/*": ["src/app/guards/*"],
+      "@services/*": ["src/app/services/*"],
+      "@directives/*": ["src/app/directives/*"],
+      "@pipes/*": ["src/app/pipes/*"],
+      "@components/*": ["src/app/components/*"],
+      "@shared/*": ["src/app/shared/*"],
+      
+      "@core/*": ["src/app/core/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@main/*": ["src/app/main/*"],
+      "@404-page/*": ["src/app/components/page-not-found/*"],
+      
+      // Shared
+      "@sh-services/*": ["src/app/shared/services/*"],
+      "@sh-directives/*": ["src/app/shared/directives/*"],
+      "@sh-components/*": ["src/app/shared/components/*"],
+      "@sh-pipes/*": ["src/app/shared/pipes/*"],
+      "@sh-models/*": ["src/app/shared/models/*"],
+      
+      // Categories
+      "@dashboard/*": ["src/app/components/dashboard/*"],
+      "@earnings-expenses/*": ["src/app/components/add-earnings-expenses/*"],
+      "@detail/*": ["src/app/components/detail/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

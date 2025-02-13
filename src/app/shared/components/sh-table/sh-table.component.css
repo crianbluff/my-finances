@@ -1,0 +1,90 @@
+/* Colors */
+.bg-tbody-earnings {
+  background-image: linear-gradient(45deg, rgba(12, 54, 61, 0.7), rgba(0, 0, 0, 0.6));
+}
+
+.bg-tbody-expenses {
+  background-image: linear-gradient(45deg, rgba(57, 4, 3, 0.7), rgba(0, 0, 0, 0.6));
+}
+
+.bg-table-success,
+.table tbody tr:hover,
+.table tbody tr:focus {
+  background-image: linear-gradient(0deg, #0c464e, #073d44);
+}
+
+.bg-table-danger,
+.table tbody tr.bg-tbody-expenses:hover,
+.table tbody tr.bg-tbody-expenses:focus {
+  background-image: linear-gradient(0deg, #7f0c0a, #470a09);
+}
+
+.bg-table-total {
+  background-image: linear-gradient(0deg, #111625, #1e2335)
+}
+
+/* Table */
+.table-responsive {
+  display: block;
+  overflow-scrolling: touch;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table {
+  max-width: 100%;
+  width: 90%;
+  margin: auto;
+}
+
+.table tbody {
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr td {
+  padding: 1rem 0.5rem;
+}
+
+/* Form */
+.input-table:disabled,
+.select-table:disabled {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+  font-size: 1.25rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-table:disabled {
+  color: #ffffff;
+}
+
+.select-table:disabled {
+  appearance: none;
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+  }
+  
+  .table tbody th:nth-child(1){
+    display: none;
+  }
+
+  .table tbody tr td {
+    padding: 1rem 0.5rem;
+  }
+  
+  .table tbody,
+  .input-table:disabled,
+  .select-table:disabled {
+    font-size: 1rem;
+  }
+}

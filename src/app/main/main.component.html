@@ -1,0 +1,21 @@
+<!-- Menu -->
+<menu-navbar [nameForMenu]="nameUser"></menu-navbar>
+
+<menu-sidebar
+  (captureClickCollapsed)="toggleCollapsed($event)"
+  (captureClickLogOut)="logOut()"
+  [isCollapsed]="isSidebarCollapsed"
+>
+  <span class="txt-capitalize">
+    {{ nameUser }}
+  </span>
+</menu-sidebar>
+
+<!-- Main -->
+<div class="page-body-wrapper" [ngClass]="{'active-sidebar-menu': !isSidebarCollapsed}">
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</div>

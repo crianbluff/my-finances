@@ -1,0 +1,12 @@
+<div class="ctn-no-results">
+  <p class="txt-no-results">
+    {{shTxtNoResults}}.
+  </p>
+
+  <sh-btn
+    (shBtnCaptureClick)="router.navigate(['/earnings-expenses'])"
+    shBtnId="btn-add-finances" [shBtnTxt]="shTxtBtnNoResults"
+    shBtnType="button" shBtnClasses="btn bg-success"
+  >
+  </sh-btn>
+</div>

@@ -1,0 +1,10 @@
+.ctn-graph {
+  margin: 0 auto;
+  width: 90%;
+}
+
+@media (max-width: 400px) {
+  .ctn-cards {
+    grid-template-columns: 1fr;
+  }
+}

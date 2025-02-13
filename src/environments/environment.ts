@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  redirectUnauthorizedTo: '/login',
+  redirectLoggedInTo: '/dashboard',
   firebase: {
     apiKey: 'AIzaSyBLY1EMaYvpHfioqcYnXVfEgCETBtIZ1ic',
     authDomain: 'ingresos-egresos-app-83b9f.firebaseapp.com',

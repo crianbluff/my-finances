@@ -1,13 +1,48 @@
-<app-navbar></app-navbar>
+<section>
+  <!-- Title -->
+  <sh-title shTxt="Dashboard"></sh-title>
 
-<div class="page-body-wrapper">
-  <app-sidebar></app-sidebar>
-
-  <div class="main-panel">
-    <div class="content-wrapper">
-      <router-outlet></router-outlet>
+  <!-- Dashboard -->
+  <div> 
+    <!-- Cards -->
+    <div class="ctn-cards">
+      <sh-card
+        titleShCard="Earnings"
+        [totalShCard]="howMuchEarnings"
+        [amountShCard]="earnings | currency:'COP':'$'"
+        bgShCard="bg-success-dark"
+        iconClassShNameCard="fa-money-bill-alt"
+      >
+      </sh-card>
+    
+      <sh-card
+        titleShCard="Expenses"
+        [totalShCard]="howMuchExpenses"
+        [amountShCard]="expenses | currency:'COP':'$'"
+        bgShCard="bg-danger-dark"
+        iconClassShNameCard="fa-money-bill-alt"
+      >
+      </sh-card>
+    
+      <sh-card
+        titleShCard="Difference" txtShCard="Total"
+        [totalShCard]="howMuchExpenses"
+        [amountShCard]="earnings - expenses | currency:'COP':'$'"
+        bgShCard="bg-black"
+        iconClassShNameCard="fa-money-bill-alt"
+      >
+      </sh-card>
     </div>
-
-    <app-footer></app-footer>
   </div>
-</div>
+
+  <!-- Graph -->
+  <section *ngIf="earnings > 0 || expenses > 0">
+    <sh-title shTxt="Graph"></sh-title>
+    
+    <div>
+      <div class="card ctn-graph">
+        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" chartType="doughnut"></canvas>
+      </div>
+    </div>
+  </section>
+</section>

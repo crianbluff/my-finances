@@ -1,4 +1,4 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -9,12 +9,23 @@
     <base href="/">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/preloader.css">
   </head>
 
   <body>
 
-    <app-root></app-root>
+    <app-core class="app-stl">
+      <div class="loading-container">
+        <div class="logo-container">
+          <i class="fa fa-spin fa-sync"></i>
+        </div>
+
+        <h4 class="loading-title">
+          Loading...
+        </h4>
+      </div>
+    </app-core>
 
   </body>
 </html>

@@ -1,0 +1,46 @@
+<section class="ctn-login">
+  <div class="login">
+    <form class="ctn-form" action="javascript:void(0);" #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin.value)">
+      <h4 class="bg-title">
+        Login
+      </h4>
+      
+      <div class="form-group">
+        <label for="email">
+          User
+        </label>
+  
+        <input type="email" class="form-control" minlength="5" maxlength="50" placeholder="example@gmail.com" name="email" required ngModel>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+  
+        <input type="password" class="form-control" minlength="6" maxlength="50" placeholder="*********" name="password" required ngModel>
+      </div>
+  
+      <div class="form-group">
+        <sh-btn
+          [itHasloader]="true" [isShBtnLoading]="loading"
+          [isShBtnDisabled]="formLogin.invalid || loading"
+          shBtnId="btn-login" class="mt-2"
+          shBtnTxt="Login" shBtnLoadingTxt="Logging"
+          shBtnType="submit" shBtnClasses="btn bg-primary btn-extended"
+        >
+        </sh-btn>
+      </div>
+  
+      <div class="info txt-center">
+        <span>
+          Have you already registered?
+        </span>
+        
+        <a href="javascript:void(0);" [routerLink]="['/register']">
+          Create a new account
+        </a>
+      </div>
+    </form>
+  </div>
+</section>

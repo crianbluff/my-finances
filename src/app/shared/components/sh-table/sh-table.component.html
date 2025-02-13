@@ -1,0 +1,75 @@
+<div class="table-responsive">
+  <table class="table">
+    <!-- Table header -->
+    <ng-content></ng-content>
+
+    <tbody>
+      <tr
+        *ngFor="let item of shTableItems | OrderByType:'type'; index as idx"
+        [ngClass]="{'bg-tbody-expenses': item.type === 'egress', 'bg-tbody-earnings': item.type === 'entry'}"
+      >
+        <th class="txt-center" scope="row">
+          {{ idx + 1 }}
+        </th>
+
+        <td>
+          <input type="text" class="input-table txt-capitalize" [value]="item.description" disabled>
+          
+          <!-- <span>
+            {{ item.description }}
+          </span> -->
+        </td>
+
+        <td class="txt-center">
+          <input type="text" class="input-table txt-center bold" [value]="item.amount | currency:'COP':'$'" disabled>
+          
+          <!-- <span>
+            {{ item.amount | currency:'COP':'$' }}
+          </span> -->
+        </td>
+
+        <td class="txt-center">
+          <!-- <span *ngIf="item.type === 'entry'" class="txt-info">
+            earnings
+          </span>
+
+          <span *ngIf="item.type === 'egress'" class="txt-danger">
+            expenses
+          </span> -->
+
+          <select
+            class="select-table txt-center"
+            [ngClass]="{'txt-info': item.type === 'entry', 'txt-danger': item.type === 'egress'}"
+            disabled
+          >
+            <option value="entry">earnings</option>
+            <option value="egress">expenses</option>
+          </select>
+        </td>
+
+        <td class="txt-center">
+          <!-- <sh-btn
+            (shBtnCaptureClick)="editItem(item)"
+            shBtnId="btn-edit-{{idx}}" shBtnTxt="Edit"
+            shBtnType="button" shBtnClasses="btn bg-warning mr-5 my-5"
+          >
+            <i class="fa fa-pencil-alt"></i>
+          </sh-btn> -->
+
+          <sh-btn
+            (click)="shBtnDeleteCaptureClick.emit(item)"
+            shBtnId="btn-delete-{{idx}}" shBtnTxt="Delete"
+            shBtnType="button"
+            shBtnClasses="btn my-5 {{item.type === 'egress' ? 'bg-danger' : 'bg-primary'}}"
+          >
+            <i class="fa fa-trash"></i>
+            
+            <span class="txt-capitalize bold">
+              {{ item.type === 'entry' ? 'earning' : 'expense' }}
+            </span>
+          </sh-btn>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

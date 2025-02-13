@@ -1,0 +1,23 @@
+<button
+  [id]="shBtnId"
+  [type]="shBtnType"
+  class="{{shBtnClasses}}"
+  [disabled]="isShBtnDisabled"
+  (click)="shBtnCaptureClick.emit()"
+>
+  <!-- Icon button -->
+  <ng-content *ngIf="!isShBtnLoading"></ng-content>
+  
+  <!-- Button text -->
+  <span *ngIf="!isShBtnLoading">
+    {{ shBtnTxt }}
+  </span>
+
+  <!-- Icon loading -->
+  <span *ngIf="isShBtnLoading">
+    <i class="fa fa-spin fa-sync"></i>
+    
+    <!-- Loading text -->
+    {{ shBtnLoadingTxt }}...
+  </span>
+</button>

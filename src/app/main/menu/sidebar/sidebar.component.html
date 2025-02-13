@@ -1,0 +1,73 @@
+<!-- Burger Button -->
+<sh-btn
+  (shBtnCaptureClick)="toggleMenu()"
+  shBtnId="btn-burguer" shBtnType="button"
+  shBtnClasses="burguer-menu"
+>
+  <i shBtIconNormal class="fa" [ngClass]="{'fa-chevron-left': isCollapsed, 'fa-chevron-right': !isCollapsed}"></i>
+</sh-btn>
+
+<nav class="sidebar" #menu>
+  <span class="bg-blur" (click)="toggleMenu()"></span>
+  
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img src="assets/images/avatar.jpeg">
+          </div>
+          
+          <div class="txt-wrapper">
+            <p class="profile-name">
+              <ng-content></ng-content>
+            </p>
+
+            <div>
+              <small class="designation">
+                User
+              </small>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
+        <i class="menu-icon fa fa-tachometer-alt"></i>
+        <span class="menu-title">
+          Dashboard
+        </span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/earnings-expenses']" routerLinkActive="active">
+        <i class="menu-icon fa fa-clipboard-list"></i>
+        <span class="menu-title">
+          Earnings & Expenses
+        </span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/detail']" routerLinkActive="active">
+        <i class="menu-icon fa fa-table"></i>
+        <span class="menu-title">
+          Detail
+        </span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="captureClickLogOut.emit()">
+        <i class="menu-icon fa fa-sign-out-alt"></i>
+        <span class="menu-title">
+          Sign Out
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>

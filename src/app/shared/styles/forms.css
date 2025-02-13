@@ -1,0 +1,108 @@
+
+/* Form */
+.ctn-register,
+.ctn-login {
+  align-items: center;
+  background: url('../../../assets/images/auth/bg.jpg') 50% / cover no-repeat #000000;
+  display: flex;
+  left: 0;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.ctn-register .register,
+.ctn-login .login {
+  width: 55%;
+  margin: auto;
+}
+
+.ctn-register .ctn-form,
+.ctn-login .ctn-form {
+  border-radius: 0.25rem;
+  padding: 5rem 2rem 2.5rem 2rem;
+  background-image: linear-gradient(180deg, #047095, rgba(0, 0, 0, 0.1));
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.9),
+              0 1px 4px 0 rgba(255, 255, 255, 0.7) inset,
+              0 -1px 4px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+.ctn-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 55%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 3rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-group label {
+  color: #ffffff;
+  font: 400 1rem 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  background-color: #101626;
+  box-shadow: 0 0 0 1px #ffffff;
+  border-style: none;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  font: 400 1rem 'Poppins', sans-serif;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+
+.ctn-earnings-expenses-btns {
+  padding: 0.25rem 3rem;
+}
+
+.info {
+  color: #8f95a3;
+}
+
+@media (max-width: 1200px) {
+  .ctn-register .register,
+  .ctn-login .login {
+    width: 70%;
+  }
+
+  .ctn-form {
+    width: 90%;
+  }
+
+  .ctn-earnings-expenses-btns {
+    padding: 0.5rem 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ctn-register .register,
+  .ctn-login .login {
+    width: 90%;
+  }
+
+  .ctn-form {
+    width: 100%;
+  }
+
+  .form-group,
+  .ctn-earnings-expenses-btns {
+    padding: 0.5rem 0;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,46 @@
+<section class="page-not-found-section-stl">
+  <div class="ctn-text-404-page">
+    <h1 class="page-not-found-title">
+      {{ titleNotFound }}
+    </h1>
+    
+    <h2 class="page-not-found-subtitle">
+      {{ subtitleNotFound }}
+    </h2>
+
+    <p>
+      Oops! {{ msgNotFound }}.
+    </p>
+  </div>
+
+  <ng-container *ngIf="isComingFromAuthPage; then authBtns; else dashboardBtn"></ng-container>
+
+  <ng-template #authBtns>
+    <div class="form-btn-raised">
+      <sh-btn
+        (shBtnCaptureClick)="router.navigate(['/register'])"
+        shBtnId="btn-go-register" shBtnTxt="Go Register"
+        shBtnType="button" shBtnClasses="btn btn-extended bg-warning"
+      >
+      </sh-btn>
+
+      <sh-btn
+        (shBtnCaptureClick)="router.navigate(['/login'])"
+        shBtnId="btn-go-login" shBtnTxt="Go Login"
+        shBtnType="button" shBtnClasses="btn btn-extended bg-warning"
+      >
+      </sh-btn>
+    </div>
+  </ng-template>
+
+  <ng-template #dashboardBtn>
+    <div class="form-btn-raised">
+      <sh-btn
+        (shBtnCaptureClick)="router.navigate(['/dashboard'])"
+        shBtnId="btn-go-login" shBtnTxt="Go Back"
+        shBtnType="button" shBtnClasses="btn btn-extended btn-extended bg-warning"
+      >
+      </sh-btn>
+    </div>
+  </ng-template>
+</section>
